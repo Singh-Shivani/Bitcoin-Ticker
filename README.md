@@ -9,5 +9,5 @@ Here's a simple URL given by CryptoCompare to fetch the prices in crypto currenc
 https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD,GBP,EUR
 
 Then you get data in JSON format.
-
+ 
 Because CryptoCompare is free💰 to use(limited features only!), it gives you free API key to integrate in your work projects (and you saved some money😉).
