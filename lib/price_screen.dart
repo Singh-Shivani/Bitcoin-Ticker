@@ -11,7 +11,7 @@ class PriceScreen extends StatefulWidget {
 class _PriceScreenState extends State<PriceScreen> {
   String selectedCurrency = 'AUD';
   String ethValue;
-  String btsValue;
+  String btcValue;
   String ltcValue;
 
   DropdownButton<String> androidDropdown() {
@@ -55,13 +55,11 @@ class _PriceScreenState extends State<PriceScreen> {
     );
   }
 
-//  String value = '?';
-
   void getData() async {
     try {
       var data = await CoinData().getCoinData(selectedCurrency);
       setState(() {
-        btsValue = data[0].toString();
+        btcValue = data[0].toString();
         ethValue = data[1].toString();
         ltcValue = data[2].toString();
       });
@@ -90,9 +88,9 @@ class _PriceScreenState extends State<PriceScreen> {
           Column(
             children: <Widget>[
               CryptoCard(
-                value: btsValue,
+                value: btcValue,
                 selectedCurrency: selectedCurrency,
-                cryptoName: 'BTS',
+                cryptoName: 'BTC',
               ),
               CryptoCard(
                 value: ethValue,
@@ -107,7 +105,7 @@ class _PriceScreenState extends State<PriceScreen> {
             ],
           ),
           Container(
-            height: 150.0,
+            height: 90.0,
             alignment: Alignment.center,
             padding: EdgeInsets.only(bottom: 30.0),
             color: Color.fromRGBO(48, 95, 114, 1),
@@ -134,20 +132,24 @@ class CryptoCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.fromLTRB(18.0, 18.0, 18.0, 0),
-      child: Card(
-        color: Color.fromRGBO(48, 95, 114, 1),
-        elevation: 5.0,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-        child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 28.0),
-          child: Text(
-            '1 $cryptoName = $value ' ' $selectedCurrency',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 20.0,
-              color: Colors.white,
+      child: Container(
+        width: 560,
+        height: 70,
+        child: Card(
+          color: Color.fromRGBO(48, 95, 114, 1),
+          elevation: 5.0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+          child: Padding(
+            padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 40.0),
+            child: Text(
+              '1 $cryptoName = $value ' ' $selectedCurrency',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 20.0,
+                color: Colors.white,
+              ),
             ),
           ),
         ),
